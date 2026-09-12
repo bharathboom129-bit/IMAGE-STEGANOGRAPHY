@@ -2,6 +2,10 @@
 
 A full-stack web application for hiding secret text or files inside images using least significant bit (LSB) steganography. The application also supports optional AES encryption and provides image comparison metrics to show how much the carrier image changed.
 
+## Application Preview
+
+![Image Steganography App](docs/app-preview.png)
+
 ## Features
 
 - Hide text inside PNG or JPEG images.
@@ -16,6 +20,8 @@ A full-stack web application for hiding secret text or files inside images using
 
 ```text
 stego_web_app/
+├── docs/
+│   └── app-preview.png
 ├── backend/
 │   ├── main.py
 │   ├── steg_logic.py
