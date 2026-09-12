@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STEGANOGRAPHY | Premium Image</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-effects">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+    
+    <header>
+        <h1>STEGANOGRAPHY</h1>
+        <p>Secure. Invisible. Powerful.</p>
+    </header>
+
+    <main class="container">
+        <!-- HIDE SECTION -->
+        <section class="card glass">
+            <h2>Hide — <span>Embed Secret</span></h2>
+            <form id="hide-form">
+                <div class="input-group">
+                    <label>Cover Image</label>
+                    <input type="file" id="cover-image" accept="image/png, image/jpeg" required>
+                </div>
+                
+                <div class="input-group">
+                    <label>Secret Text (optional)</label>
+                    <textarea id="secret-text" placeholder="Type a secret message..."></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label>Secret File (optional)</label>
+                    <input type="file" id="secret-file">
+                </div>
+                
+                <div class="input-group checkbox-group">
+                    <input type="checkbox" id="use-encryption">
+                    <label for="use-encryption">Use AES Encryption?</label>
+                </div>
+                
+                <div class="input-group" id="hide-password-group" style="display: none;">
+                    <label>Password</label>
+                    <input type="password" id="hide-password" placeholder="Enter secure password (min 4 chars)">
+                </div>
+                
+                <button type="submit" class="btn primary-btn" id="hide-btn">Hide & Download Stego Image</button>
+                <p class="status-msg" id="hide-status">Ready</p>
+            </form>
+        </section>
+
+        <!-- EXTRACT SECTION -->
+        <section class="card glass">
+            <h2>Extract — <span>Reveal Secret</span></h2>
+            <form id="extract-form">
+                <div class="input-group">
+                    <label>Stego Image</label>
+                    <input type="file" id="stego-image" accept="image/png, image/jpeg" required>
+                </div>
+                
+                <div class="input-group">
+                    <label>Password (if encrypted)</label>
+                    <input type="password" id="extract-password" placeholder="Enter decryption password">
+                </div>
+                
+                <button type="submit" class="btn secondary-btn" id="extract-btn">Extract Secret</button>
+                <p class="status-msg" id="extract-status">Ready</p>
+            </form>
+            
+            <div id="extract-result" class="result-area hidden">
+                <h3>Extracted Content</h3>
+                <div id="extracted-text-container" class="hidden">
+                    <h4>Message:</h4>
+                    <pre id="extracted-text"></pre>
+                </div>
+                <div id="extracted-file-container" class="hidden">
+                    <h4>File:</h4>
+                    <a id="extracted-file-link" href="#" download class="btn download-btn">Download File</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMPARE SECTION -->
+        <section class="card glass">
+            <h2>Compare — <span>Analyze Image</span></h2>
+            <form id="compare-form">
+                <div class="input-group">
+                    <label>Original Image</label>
+                    <input type="file" id="comp-original" accept="image/png, image/jpeg" required>
+                </div>
+                
+                <div class="input-group">
+                    <label>Stego Image</label>
+                    <input type="file" id="comp-stego" accept="image/png, image/jpeg" required>
+                </div>
+                
+                <button type="submit" class="btn outline-btn" id="compare-btn">Show Difference</button>
+                <p class="status-msg" id="compare-status">Ready</p>
+            </form>
+            
+            <div id="compare-result" class="result-area hidden">
+                <h3>Difference Map</h3>
+                <img id="diff-image" src="" alt="Difference Map" style="margin-bottom: 1.5rem;">
+                
+                <div class="stats-grid" id="stats-container">
+                    <div class="stat-box">
+                        <span>Dimensions</span>
+                        <strong id="stat-dim">-</strong>
+                    </div>
+                    <div class="stat-box">
+                        <span>Changed Pixels</span>
+                        <strong id="stat-px">-</strong>
+                    </div>
+                    <div class="stat-box">
+                        <span>% Changed</span>
+                        <strong id="stat-pct">-</strong>
+                    </div>
+                    <div class="stat-box">
+                        <span>LSB Diff</span>
+                        <strong id="stat-lsb">-</strong>
+                    </div>
+                    <div class="stat-box">
+                        <span>MSE</span>
+                        <strong id="stat-mse">-</strong>
+                    </div>
+                    <div class="stat-box">
+                        <span>PSNR</span>
+                        <strong id="stat-psnr">-</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
